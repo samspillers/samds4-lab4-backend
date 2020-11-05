@@ -67,7 +67,7 @@ app.get("/wait", (request, response) => {
     }, 5000)
 })
 
-app.post("demosql", (request, response) => {
+app.post("/demosql", (request, response) => {
     if (request.body.name && request.body.message) {
         const theQuery = "INSERT INTO DEMO(Name, Message) VALUES ($1, $2) RETURNING *"
         const values = [request.body.name, request.body.message]
