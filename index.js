@@ -10,7 +10,8 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.json())
 
 //Obtain a Pool of DB connections. 
-const { Pool } = require('pg')
+const { Pool } = require('pg');
+const { response } = require('express');
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: {
@@ -30,6 +31,41 @@ app.post("/hello", (request, reponse) => {
     })
 })
 
+app.get("/params", (request, response) => {
+    if (request.query.name) {
+        response.send({
+            // req.query is a reference to arguments in the POST body
+            message:"Hello, " + request.query.name + "! You sent a GET Request"
+        })
+    } else {
+        response.status(400)
+        response.send({
+            message:"Missing required information"
+        })
+    }
+})
+
+app.post("/params", (request, response) => {
+    if (request.body.name) {
+        response.send({
+            // req.body is a reference to arguments in the POST body
+            message: "Hello, " + request.body.name + "! You sent a POST request"
+        })
+    } else {
+        response.status(400)
+        response.send({
+            message:"Missing required information"
+        })
+    }
+})
+
+app.get("/wait", (request, response) => {
+    setTimeout(() => {
+        response.send({
+            message:"Thanks for waiting"
+        })
+    }, 5000)
+})
 
 
 /*
