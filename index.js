@@ -18,7 +18,17 @@ const pool = new Pool({
     }
 })
 
+app.get("/hello", (request, response) => {
+    response.send({
+        message: "Hello, you sent a GET request"
+    })
+})
 
+app.post("/hello", (request, reponse) => {
+    reponse.send({
+        message: "Hello, you sent a POST request"
+    })
+})
 
 
 
