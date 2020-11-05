@@ -711,5 +711,28 @@
     "version": "0.0.0",
     "filename": "routes/phish.js",
     "groupTitle": "Phish"
+  },
+  {
+    "type": "get",
+    "url": "/wait",
+    "title": "Request a long running task",
+    "name": "GetWait",
+    "group": "Wait",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "message",
+            "description": "<p>Hello World message after a long wait</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "routes/wait.js",
+    "groupTitle": "Wait"
   }
 ]

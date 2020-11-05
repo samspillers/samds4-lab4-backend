@@ -9,8 +9,6 @@ const bodyParser = require("body-parser");
 //This allows parsing of the body of POST requests, that are encoded in JSON
 app.use(bodyParser.json())
 
-const { response, request } = require('express');
-
 app.use('/auth', require('./routes/login.js'))
 
 app.use('/auth', require('./routes/register.js'))
@@ -21,13 +19,7 @@ app.use('/hello', require('./routes/hello.js'))
 
 app.use('/params', require('./routes/params.js'))
 
-app.get("/wait", (request, response) => {
-    setTimeout(() => {
-        response.send({
-            message:"Thanks for waiting"
-        })
-    }, 5000)
-})
+app.use('/wait', require('./routes/wait.js'))
 
 app.use('/demosql', require('./routes/demosql.js'))
 
