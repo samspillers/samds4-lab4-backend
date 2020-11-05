@@ -101,7 +101,7 @@ app.post("demosql", (request, response) => {
 
 app.get("/demosql", (request, response) => {
     const theQuery = 'SELECT name, message FROM Demo WHERE name LIKE $1'
-    let values = [request.param.name]
+    let values = [request.params.name]
 
     // No name was sent so SELECT on all
     if (!request.params.name)
